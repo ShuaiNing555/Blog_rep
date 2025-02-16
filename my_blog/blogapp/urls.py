@@ -1,12 +1,11 @@
 from django.urls import path
-from . import views
+from .views import registration, post_list, post_detail, post_create, post_edit, post_delete
 
 urlpatterns = [
-    path('registration/', views.registration, name='registration'),
-    path('posts/', views.post_list, name='post_list'),
-    path('post/<int:post_id>/', views.post_detail, name='post_detail'),
-    path('post/new/', views.post_create, name='post_create'),
-    path('post/<int:post_id>/edit/', views.post_edit, name='post_edit'),
-    path('post/<int:post_id>/delete/', views.post_delete, name='post_delete'),
-    path('post/<int:post_id>/comment/', views.add_comment, name='add_comment'),
+    path('registration/', registration, name='register'),
+    path('', post_list, name='post_list'),
+    path('post/<int:pk>/', post_detail, name='post_detail'),
+    path('post/new/', post_create, name='post_create'),
+    path('post/<int:post_id>/edit/', post_edit, name='post_edit'),
+    path('post/<int:post_id>/delete/', post_delete, name='post_delete'),
 ]
